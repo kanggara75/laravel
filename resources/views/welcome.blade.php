@@ -26,8 +26,16 @@
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
 
       <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-        <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-          Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+        <div class="ml-4 text-center text-2xl text-sky-500 sm:text-right sm:ml-0">
+          Laravel v{{ Illuminate\Foundation\Application::VERSION }} x
+          Tailwind CSS
+          <?php
+          $packageJSON = json_decode(file_get_contents(base_path() . '/package.json'));
+          $v = $packageJSON->devDependencies->tailwindcss;
+          $out = str_replace('^', 'v', $v);
+          echo $out;
+          ?>
+          (PHP v{{ PHP_VERSION }})
         </div>
       </div>
     </div>
