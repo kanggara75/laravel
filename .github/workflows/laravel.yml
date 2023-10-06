@@ -44,7 +44,7 @@ jobs:
           composer install --no-scripts
       - name: Prepare Laravel Application
         run: |
-          cp .env.example .env
+          cp .env.ci .env
           php artisan key:generate
       - name: Laravel Migrate
         run: php artisan migrate
