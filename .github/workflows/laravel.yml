@@ -17,7 +17,7 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: test
+          MYSQL_DATABASE: laravel
         ports:
           - 33306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -44,7 +44,7 @@ jobs:
           composer install --no-scripts
       - name: Prepare Laravel Application
         run: |
-          cp .env.ci .env
+          cp .env.example .env
           php artisan key:generate
       - name: Laravel Migrate
         run: php artisan migrate
