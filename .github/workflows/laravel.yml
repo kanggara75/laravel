@@ -23,8 +23,6 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-      - name: Install additional PHP extensions
-        run: apt-get install -y php-pcov
       - uses: actions/checkout@v4
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.4.0
@@ -51,4 +49,4 @@ jobs:
       - name: Laravel Migrate
         run: php artisan migrate
       - name: Laravel Run Test
-        run: php artisan test --coverage
+        run: php artisan test
